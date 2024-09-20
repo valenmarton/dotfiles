@@ -10,9 +10,15 @@ return {
 			vim.cmd([[colorscheme rose-pine]])
 		end,
 	},
+	{
+		"vague2k/vague.nvim",
+	},
 	-- I have a separate config.mappings file where I require which-key.
 	-- With lazy the plugin will be automatically loaded when it is required somewhere
 	{ "folke/which-key.nvim", lazy = true },
+	{
+		"folke/zen-mode.nvim",
+	},
 	{
 		"dstein64/vim-startuptime",
 		-- lazy-load on a command
@@ -36,7 +42,16 @@ return {
 		-- mode is `n` by default. For more advanced options, check the section on key mappings
 		keys = { "<C-a>", { "<C-x>", mode = "n" } },
 	},
-	{ "kylechui/nvim-surround" },
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 
 	-- if some code requires a module from an unloaded plugin, it will be automatically loaded.
 	-- So for api plugins like devicons, we can always set lazy=true

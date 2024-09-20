@@ -1,9 +1,9 @@
 -- Create the user command
-vim.api.nvim_create_user_command('SetCwdToCurrentFile', function()
-    local current_file = vim.fn.expand("%:p")
-    local current_directory = vim.fn.fnamemodify(current_file, ":h")
-    vim.cmd("lcd " .. vim.fn.fnameescape(current_directory))
-    vim.cmd("Ex")
+vim.api.nvim_create_user_command("SetCwdToCurrentFile", function()
+	local current_file = vim.fn.expand("%:p")
+	local current_directory = vim.fn.fnamemodify(current_file, ":h")
+	print("root dir: " .. current_directory)
+	vim.cmd("lcd " .. vim.fn.fnameescape(current_directory))
 end, {})
 
 -- Create the autocmd group
