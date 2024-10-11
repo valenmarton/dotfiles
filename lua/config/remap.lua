@@ -1,8 +1,12 @@
-vim.keymap.set("n", "<bs><bs>", "<cmd>Ex<cr>", { desc = "Open parent directory" })
+-- exchanged with oil.nvim
+-- vim.keymap.set("n", "<bs><bs>", "<cmd>Ex<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<bs><bs>", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
+-- move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- better half page scroll
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
