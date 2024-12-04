@@ -2,8 +2,16 @@
 vim.api.nvim_create_user_command("SetCwdToCurrentFile", function()
     local current_file = vim.fn.expand("%:p")
     local current_directory = vim.fn.fnamemodify(current_file, ":h")
-    print("root dir: " .. current_directory)
-    vim.cmd("lcd " .. vim.fn.fnameescape(current_directory))
+    local clean_path = string.gsub(current_directory, "^oil://", "")
+    -- print("root dir: " .. clean_path)
+    vim.cmd("lcd " .. vim.fn.fnameescape(clean_path))
+    -- vim.cmd("lcd " .. vim.fn.fnameescape(current_directory))
+
+    -- for NETRW
+    -- local current_file = vim.fn.expand("%:p")
+    -- local current_directory = vim.fn.fnamemodify(current_file, ":h")
+    -- print("root dir: " .. current_directory)
+    -- vim.cmd("lcd " .. vim.fn.fnameescape(current_directory))
 end, {})
 
 -- Create the autocmd group
