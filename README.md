@@ -10,7 +10,16 @@
 
 ## Nice-To-Have tools:
 
-- zsh (powerlevel10k, autocompletion plugin)
+- zsh (powerlevel10k, ohmyzsh, autocompletion plugin)
+   `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc`
+
+  `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+  `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
+  Open ~/.zshrc, find the line that sets ZSH_THEME, and change its value to "powerlevel10k/powerlevel10k"
+
+  `https://gist.github.com/n1snt/454b879b8f0b7995740ae04c5fb5b7df` plugins
 - tmux (with .tmux config)
 - tmux-sessionizer
 - jq (json query)
