@@ -33,3 +33,4 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc`
 ### Related
 
 - https://github.com/valenmarton/tmux
+- Download app-image in case the snap binary is not working correctly with LSP servers: https://github.com/neovim/neovim/releases
