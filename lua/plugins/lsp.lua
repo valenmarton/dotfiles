@@ -34,7 +34,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "ts_ls",
-                "gopls",
+                -- "gopls",
             },
             handlers = {
                 function(server_name) -- default handler, if no other ls handler is specified (optional)
