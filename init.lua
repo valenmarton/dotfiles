@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         local mode = vim.api.nvim_get_mode().mode
         local filetype = vim.bo.filetype
         local modified = vim.bo.modified
-        if filetype == 'oil' then 
+        if filetype == 'oil' then
             return
         end
         if modified == true and mode == 'n' then

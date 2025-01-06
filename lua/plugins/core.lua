@@ -12,13 +12,20 @@ return {
                 }
             }
             -- load the colorscheme here
-            vim.cmd([[colorscheme rose-pine]])
+            -- vim.cmd([[colorscheme rose-pine]])
         end,
     },
     {
         "sainnhe/gruvbox-material",
         config = function()
             -- vim.cmd([[colorscheme gruvbox-material]])
+        end
+    },
+    { "folke/tokyonight.nvim" },
+    {
+        "xiantang/darcula-dark.nvim",
+        config = function()
+            vim.cmd([[colorscheme tokyonight]])
         end
     },
     {

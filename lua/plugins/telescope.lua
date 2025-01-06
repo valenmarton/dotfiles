@@ -86,6 +86,7 @@ return {
         vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
         vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
         vim.keymap.set("n", "gi", "<cmd>Telescope lsp_definitions<cr>", opts)
+        vim.keymap.set("n", "<leader>l", "<cmd>Telescope resume<cr>", opts)
         -- Change colorscheme
         vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", opts)
 
