@@ -6,19 +6,36 @@ return {
         priority = 1000, -- make sure to load this before all the other start plugins
         name = "rose-pine",
         config = function()
+            require('rose-pine').setup {
+                styles = {
+                    italic = false
+                }
+            }
             -- load the colorscheme here
             vim.cmd([[colorscheme rose-pine]])
         end,
     },
     {
+        "sainnhe/gruvbox-material",
+        config = function()
+            -- vim.cmd([[colorscheme gruvbox-material]])
+        end
+    },
+    {
         "vague2k/vague.nvim",
     },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        config = function()
+            -- vim.cmd [[colorscheme catppuccin]]
+        end
+    },
+    { "stevearc/dressing.nvim" },
     -- I have a separate config.mappings file where I require which-key.
     -- With lazy the plugin will be automatically loaded when it is required somewhere
-    { "folke/which-key.nvim", lazy = true },
-    {
-        "folke/zen-mode.nvim",
-    },
+    { "folke/which-key.nvim",  lazy = true },
+    { "folke/zen-mode.nvim" },
     {
         "dstein64/vim-startuptime",
         -- lazy-load on a command
@@ -38,6 +55,7 @@ return {
 
     {
         "monaqa/dial.nvim",
+        enabled = false,
         -- lazy-load on keys
         -- mode is `n` by default. For more advanced options, check the section on key mappings
         keys = { "<C-a>", { "<C-x>", mode = "n" } },
