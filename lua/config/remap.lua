@@ -45,3 +45,6 @@ vim.keymap.set("n", "<leader>q", function()
 end)
 vim.keymap.set("n", "[q", ":cnext<cr>")
 vim.keymap.set("n", "]q", ":cprev<cr>")
+
+vim.keymap.set("n", "<C-s>", "5j")
+vim.keymap.set("n", "<C-f>", "5k")

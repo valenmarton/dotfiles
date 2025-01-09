@@ -26,6 +26,27 @@ augroup cdpwd
 augroup END
 ]])
 
+local function is_eslint_lsp_available_and_compatible()
+    -- Get active LSP clients
+    local clients = vim.lsp.get_active_clients()
+    for _, client in ipairs(clients) do
+        if client.name == "eslint" then
+            local success, err = pcall(function()
+                vim.cmd('EslintFixAll')
+            end)
+
+            if not success then
+                print("Error while running EslintFixAll: " .. err)
+            else
+                print("EslintFixAll ran successfully!")
+            end
+            return true
+        end
+    end
+end
+
+
+-- TODO: optional because eslint config: AutoFixOnSave is not working, so calling in manually
 -- Autoformat & run eslint on js/ts files
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
@@ -39,7 +60,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
             vim.lsp.buf.format()
         end
         if filetype == 'javascript' or filetype == 'typescript' then
-            vim.cmd('EslintFixAll')
+            is_eslint_lsp_available_and_compatible()
         end
     end
 })

@@ -86,7 +86,7 @@ return {
         vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
         vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
         vim.keymap.set("n", "gi", "<cmd>Telescope lsp_definitions<cr>", opts)
-        vim.keymap.set("n", "<leader>l", "<cmd>Telescope resume<cr>", opts)
+        vim.keymap.set("n", "<leader>ls", "<cmd>Telescope resume<cr>", opts)
         -- Change colorscheme
         vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", opts)
 
@@ -111,6 +111,12 @@ return {
         end)
 
         vim.keymap.set("n", "<leader>.", builtin.current_buffer_fuzzy_find, {})
-        vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
+        vim.keymap.set("n", "<leader>/", function()
+            builtin.live_grep({
+                additional_args = function(opts)
+                    return { "--glob", "!**/.git/**", "--glob", "**/*.env" }
+                end,
+            })
+        end)
     end,
 }
