@@ -28,7 +28,7 @@ augroup END
 
 local function is_eslint_lsp_available_and_compatible()
     -- Get active LSP clients
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     for _, client in ipairs(clients) do
         if client.name == "eslint" then
             local success, err = pcall(function()

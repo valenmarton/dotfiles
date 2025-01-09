@@ -199,16 +199,20 @@ return {
                 end,
                 ["eslint"] = function()
                     local lspconfig = require("lspconfig")
+                    -- Call has_eslintrc() to evaluate the condition
                     lspconfig.eslint.setup({
                         capabilities = capabilities,
                         settings = {
-                            eslint = {
-                                -- enable = true,
-                                autoFixOnSave = true,
-                                format = {
-                                    enable = false
-                                }
-                            }
+                            validate = 'off',
+                            -- quiet = true,
+                            -- silent = true,
+                            -- eslint = {
+                            --     enable = false,
+                            --     autoFixOnSave = true,
+                            --     format = {
+                            --         enable = false
+                            --     }
+                            -- }
                         },
                     })
                 end,

@@ -112,11 +112,7 @@ return {
 
         vim.keymap.set("n", "<leader>.", builtin.current_buffer_fuzzy_find, {})
         vim.keymap.set("n", "<leader>/", function()
-            builtin.live_grep({
-                additional_args = function(opts)
-                    return { "--glob", "!**/.git/**", "--glob", "**/*.env" }
-                end,
-            })
+            builtin.live_grep({})
         end)
     end,
 }
