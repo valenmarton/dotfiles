@@ -2,7 +2,7 @@ return {
     'stevearc/conform.nvim',
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    enabled = false,
+    enabled = true,
     config = function()
         require("conform").setup({
             -- this will format on save by the default LSP's formatter, if no formatters are specified below
@@ -20,6 +20,7 @@ return {
                 -- rust = { "rustfmt", lsp_format = "fallback" },
                 -- Conform will run the first available formatter
                 javascript = { "prettier", "prettierd", stop_after_first = true },
+                typescript = { "prettier" }
             },
         })
     end

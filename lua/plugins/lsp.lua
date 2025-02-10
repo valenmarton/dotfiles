@@ -142,6 +142,7 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities()
         )
+        require('java').setup()
         require("mason").setup()
         require("mason-lspconfig").setup({
             automatic_installation = {},
@@ -216,6 +217,33 @@ return {
                         },
                     })
                 end,
+                ["jdtls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.jdtls.setup({
+                        settings = {
+                            java = {
+                                contentProvider = { preferred = 'fernflower' }, -- Ensures decompiled sources are available
+                                format = { enabled = true },
+                                maven = { downloadSources = true },
+                                referencesCodeLens = { enabled = true },
+                                implementationsCodeLens = { enabled = true },
+                                signatureHelp = { enabled = true },
+                                completion = {
+                                    enabled = true,
+                                    favoriteStaticMembers = {
+                                        "org.junit.Assert.*",
+                                        "org.mockito.Mockito.*"
+                                    },
+                                    filteredTypes = {
+                                        "com.sun.*",
+                                        "java.awt.*",
+                                        "sun.*",
+                                    }
+                                },
+                            }
+                        }
+                    })
+                end
             },
         })
 
@@ -246,7 +274,7 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp" },
+                { name = "nvim_lsp", keyword_length = 3 },
                 { name = "path" },
                 -- { name = 'vsnip' }, -- For vsnip users.
                 -- { name = 'luasnip' }, -- For luasnip users.
@@ -255,6 +283,22 @@ return {
             }, {
                 { name = "buffer" },
             }),
+            formatting = {
+                format = function(entry, vim_item)
+                    -- Show Javadoc in completion
+                    vim_item.menu = ({
+                        nvim_lsp = "[LSP]",
+                    })[entry.source.name]
+                    return vim_item
+                end,
+            },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(), -- Ensure doc popup is enabled
+            },
+            experimental = {
+                ghost_text = true,
+            },
         })
 
         vim.diagnostic.config({

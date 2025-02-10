@@ -48,22 +48,23 @@ end
 
 -- TODO: optional because eslint config: AutoFixOnSave is not working, so calling in manually
 -- Autoformat & run eslint on js/ts files
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        local mode = vim.api.nvim_get_mode().mode
-        local filetype = vim.bo.filetype
-        local modified = vim.bo.modified
-        if filetype == 'oil' then
-            return
-        end
-        if modified == true and mode == 'n' then
-            vim.lsp.buf.format()
-        end
-        if filetype == 'javascript' or filetype == 'typescript' then
-            is_eslint_lsp_available_and_compatible()
-        end
-    end
-})
+-- INFO: for eslint formatting
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     callback = function()
+--         local mode = vim.api.nvim_get_mode().mode
+--         local filetype = vim.bo.filetype
+--         local modified = vim.bo.modified
+--         if filetype == 'oil' then
+--             return
+--         end
+--         if modified == true and mode == 'n' then
+--             vim.lsp.buf.format()
+--         end
+--         if filetype == 'javascript' or filetype == 'typescript' then
+--             is_eslint_lsp_available_and_compatible()
+--         end
+--     end
+-- })
 
 
 -- loading plugins

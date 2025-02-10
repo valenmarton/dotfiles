@@ -4,7 +4,6 @@ return {
     -- or                              , branch = '0.1.x',
     dependencies = {
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
     },
     config = function()
         local actions = require("telescope.actions")
@@ -41,7 +40,6 @@ return {
         })
         -- To get fzf loaded and working with telescope, you need to call
         -- load_extension, somewhere after setup function:
-        require('telescope').load_extension('fzf')
 
 
         local builtin = require("telescope.builtin")

@@ -20,7 +20,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- better j&k when using linewraps
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "_", "g_")
 vim.keymap.set("n", "^", "g^")
 vim.keymap.set("n", "$", "g$")
 vim.keymap.set("n", "j", "gj")
